@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nothing - миний профайл.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#020a40">
+  <meta property="og:title" content="Nothing">
+  <meta property="og:description" content="Nothing - миний профайл.">
+  <meta property="og:image" content="logo.png">
+  <title>Профайл - Nothing</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="circle circle1"></div>
+  <div class="circle circle2"></div>
+
+  <header>
+    <a class="logo" href="index.html"><img src="logo.png" alt="Nothing лого">Nothing</a>
+    <nav>
+      <a href="index.html">Нүүр хуудас</a>
+      <a href="time-salary.html">Цаг ба цалин</a>
+      <a href="employees.html">Ажилтнууд</a>
+      <a href="leaderboard.html">Шилдэг ажилтан</a>
+      <a href="login.html" class="button small">Нэвтрэх</a>
+    </nav>
+    <!-- Нийгмийн сүлжээ: дарахад тухайн сайт руу очно -->
+    <div class="social">
+      <a href="https://www.facebook.com" target="_blank" title="Facebook" class="fb">
+        <svg viewBox="0 0 24 24"><path fill="white" d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.4H7.7V13h2.7v8h3.1z"/></svg>
+      </a>
+      <a href="https://www.instagram.com" target="_blank" title="Instagram" class="ig">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.2" cy="6.8" r="1" fill="white" stroke="none"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Миний профайл</h1>
+    <p class="page-sub">Таны хувийн мэдээлэл</p>
+
+    <!-- 1) Профайлын мэдээлэл -->
+    <div class="profile-box">
+      <div class="avatar" id="p-avatar"></div>
+      <h2 id="p-name"></h2>
+      <div class="row"><span>Имэйл</span><span id="p-email"></span></div>
+      <div class="row"><span>Эрх</span><span id="p-role"></span></div>
+      <div class="row"><span>Албан тушаал</span><span id="p-position"></span></div>
+      <div class="row"><span>Утас</span><span id="p-phone"></span></div>
+      <p class="info" id="p-bio"></p>
+      <p class="info" id="saved-msg"></p>
+      <button type="button" class="button" onclick="openEdit()">Профайл засах</button>
+      <a href="time-salary.html" class="button">Цаг ба цалин</a>
+      <button type="button" class="button" onclick="logout()">Гарах</button>
+    </div>
+
+    <!-- 2) Засах форм (эхэндээ нуугдсан) -->
+    <form id="edit-form" class="form-box hidden" onsubmit="saveProfile(); return false;">
+      <h3>Профайл засах</h3>
+
+      <label for="e-name">Нэр</label>
+      <input id="e-name" type="text">
+
+      <label for="e-position">Албан тушаал</label>
+      <input id="e-position" type="text" placeholder="Жишээ: IT инженер">
+
+      <label for="e-phone">Утас</label>
+      <input id="e-phone" type="text" placeholder="Жишээ: 9911 2233">
+
+      <label for="e-bio">Өөрийн тухай</label>
+      <textarea id="e-bio" rows="3" placeholder="Товч танилцуулга"></textarea>
+
+      <p id="edit-error" class="error"></p>
+      <button type="submit" class="button">Хадгалах</button>
+      <button type="button" class="button" onclick="cancelEdit()">Болих</button>
+    </form>
+  </main>
+
+  <footer>
+  <p>
+    <a href="time-salary.html">Цаг ба цалин</a>
+    <a href="employees.html">Ажилтнууд</a>
+    <a href="leaderboard.html">Шилдэг ажилтан</a>
+    <a href="hr.html">HR хяналт</a>
+  </p>
+  <p>© 2026 Nothing. Бүх эрх хамгаалагдсан.</p>
+</footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Нэвтрээгүй бол нэвтрэх хуудас руу буцаана
+    if (getUser() === null) {
+      window.location.href = "login.html";
+    }
+
+    // Профайлын мэдээллийг хуудсан дээр бичнэ
+    function showProfile() {
+      var profile = getProfile();
+      document.getElementById("p-avatar").textContent = profile.name.charAt(0).toUpperCase();
+      document.getElementById("p-name").textContent = profile.name;
+      document.getElementById("p-email").textContent = getUser();
+      document.getElementById("p-role").textContent = getRole();
+      // || гэдэг нь: зүүн тал хоосон бол баруун талыг ав гэсэн үг
+      document.getElementById("p-position").textContent = profile.position || "Оруулаагүй";
+      document.getElementById("p-phone").textContent = profile.phone || "Оруулаагүй";
+      document.getElementById("p-bio").textContent = profile.bio;
+    }
+
+    // "Профайл засах" дарахад: формыг одоогийн мэдээллээр дүүргээд харуулна
+    function openEdit() {
+      var profile = getProfile();
+      document.getElementById("e-name").value = profile.name;
+      document.getElementById("e-position").value = profile.position;
+      document.getElementById("e-phone").value = profile.phone;
+      document.getElementById("e-bio").value = profile.bio;
+      document.getElementById("edit-error").textContent = "";
+      document.getElementById("edit-form").classList.remove("hidden");
+    }
+
+    function cancelEdit() {
+      document.getElementById("edit-form").classList.add("hidden");
+    }
+
+    // "Хадгалах" дарахад ажиллана
+    function saveProfile() {
+      var name = document.getElementById("e-name").value.trim();
+      if (name === "") {
+        document.getElementById("edit-error").textContent = "Нэрээ бичнэ үү.";
+        return;
+      }
+
+      var profile = {
+        name: name,
+        position: document.getElementById("e-position").value.trim(),
+        phone: document.getElementById("e-phone").value.trim(),
+        bio: document.getElementById("e-bio").value.trim()
+      };
+
+      // Объектыг текст болгоод хөтөчийн санах ойд хадгална
+      localStorage.setItem("cb_profile", JSON.stringify(profile));
+
+      showProfile();     // хуудасны мэдээллийг шинэчилнэ
+      updateHeader();    // дээд талын нэрийг шинэчилнэ
+      cancelEdit();      // формыг нууна
+      document.getElementById("saved-msg").textContent = "✔ Профайл хадгалагдлаа.";
+    }
+
+    showProfile();
+  </script>
+</body>
+</html>

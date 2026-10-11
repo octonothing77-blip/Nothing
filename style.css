@@ -1,0 +1,342 @@
+html { scroll-behavior: smooth; }   
+
+* {
+  margin: 0;             
+  padding: 0;
+  box-sizing: border-box; 
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: white;
+  min-height: 100vh;     
+
+  background: linear-gradient(135deg, #020a40, #0a2bd0, #020a40);
+  background-attachment: fixed; 
+}
+
+.circle {
+  position: fixed;                      
+  z-index: -1;                             
+  border: 1px solid rgba(120, 180, 255, 0.4);  
+  border-radius: 50%;                    
+}
+.circle1 { width: 700px; height: 700px; top: -250px; right: -200px; }
+.circle2 { width: 500px; height: 500px; bottom: -200px; left: -150px; }
+.circle3 { width: 300px; height: 300px; top: 40%; left: 55%; background: rgba(74, 168, 255, 0.15); border: none; }
+
+
+header {
+  display: flex;                    
+  justify-content: space-between;   
+  align-items: center;
+  padding: 20px 50px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 35px;                       
+}
+
+nav a {
+  position: relative;              
+  color: #c8d8ff;
+  text-decoration: none;            
+  padding: 6px 0;
+  transition: 0.3s;
+}
+nav a:hover { color: white; }      
+
+nav a:not(.button)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #78b4ff;
+  box-shadow: 0 0 8px #78b4ff;      
+  transition: 0.3s;
+}
+nav a:not(.button):hover::after { width: 100%; }
+nav a:not(.button):hover { transform: translateY(-2px); text-shadow: 0 0 10px #78b4ff; }
+
+/* Facebook, Instagram дугуй товч */
+.social { display: flex; gap: 12px; }
+.social a {
+  width: 38px; height: 38px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  color: white; text-decoration: none; font-weight: bold;
+  transition: 0.3s;
+}
+.social a:hover {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 15px rgba(120, 180, 255, 0.9);
+  transform: translateY(-3px);
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 30px;
+  margin: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid white;
+  border-radius: 30px;             
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;                 
+  font-family: inherit;             
+  font-size: 16px;
+  cursor: pointer;
+}
+.button:hover {
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 20px rgba(120, 180, 255, 0.9);  
+}
+.button.small { padding: 6px 18px; }
+
+/* ---------- 5. Гол гарчиг хэсэг ---------- */
+.hero {
+  text-align: center;               
+  max-width: 700px;
+  margin: 0 auto;                  
+  padding: 100px 20px;
+}
+.hero h1 { font-size: 64px; margin-bottom: 20px; }
+.hero p  { color: #c8d8ff; font-size: 18px; line-height: 1.6; margin-bottom: 30px; }
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;                  
+  justify-content: center;
+  gap: 20px;                        
+  padding: 0 20px 80px;
+}
+.card {
+  display: flex;                    
+  flex-direction: column;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;                  
+  width: 250px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.1);   
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  transition: 0.3s;                 
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.05);  
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 25px rgba(120, 180, 255, 0.6);
+}
+.card .more {
+  margin: auto auto 0;              
+  padding: 8px 28px;
+  background: rgba(74, 168, 255, 0.35);   
+  border: 1px solid rgba(120, 180, 255, 0.8);
+  border-radius: 20px;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  transition: 0.3s;
+}
+.card:hover .more { background: #4aa8ff; box-shadow: 0 0 15px rgba(120, 180, 255, 0.9); }
+.card h3 { margin-bottom: 10px; }
+.card p  { color: #c8d8ff; line-height: 1.5; font-size: 15px; margin-bottom: 20px; }
+
+footer { text-align: center; padding: 30px; color: #c8d8ff; font-size: 14px; }
+
+@media (max-width: 600px) {
+  header { padding: 20px; }
+  .hero h1 { font-size: 40px; }
+}
+
+.container { max-width: 1000px; margin: 0 auto; padding: 40px 20px 80px; }
+.page-title { text-align: center; font-size: 42px; margin-bottom: 10px; }
+.page-sub { text-align: center; color: #c8d8ff; margin-bottom: 40px; }
+
+.avatar {
+  width: 70px; height: 70px; margin-bottom: 15px;
+  display: flex; align-items: center; justify-content: center;
+  background: #4aa8ff; border-radius: 50%;    
+  font-size: 28px; font-weight: bold;
+}
+.role { color: #78b4ff; margin-bottom: 10px; }
+.tag {
+  display: inline-block; margin: 3px 3px 3px 0; padding: 3px 10px;
+  background: rgba(255, 255, 255, 0.15); border-radius: 12px; font-size: 13px;
+}
+.info { font-size: 14px; color: #c8d8ff; margin: 8px 0; }
+.people .card { width: 300px; }
+.people .card:hover { transform: translateY(-10px); }   
+.people .card .button { margin: 15px auto 0; font-size: 14px; padding: 8px 22px; }
+
+
+.table-wrap { overflow-x: auto; }              
+table {
+  width: 100%; border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px; overflow: hidden;
+}
+th, td { padding: 14px 18px; text-align: left; }
+th { background: rgba(255, 255, 255, 0.15); }
+tr + tr td { border-top: 1px solid rgba(255, 255, 255, 0.15); }
+tr:hover td { background: rgba(255, 255, 255, 0.08); }
+
+/* --- Leaderboard: шагналын тавцан --- */
+.podium { display: flex; justify-content: center; align-items: flex-end; gap: 20px; margin-bottom: 40px; }
+.place { width: 200px; text-align: center; padding: 25px 15px; border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); }
+.place .medal { font-size: 40px; }
+.place .score { color: #78b4ff; font-size: 20px; margin-top: 8px; }
+.place.first { padding-bottom: 60px; background: rgba(255, 215, 0, 0.18); border-color: gold; }  /* 1-р байр өндөр */
+.place.second { padding-bottom: 40px; }
+.badge { text-align: center; margin-bottom: 30px; font-size: 18px; }
+
+/* --- Нэвтрэх форм --- */
+.form-box { max-width: 400px; margin: 40px auto; padding: 35px;
+  background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 15px; }
+.form-box label { display: block; margin: 15px 0 6px; color: #c8d8ff; }
+.form-box input, .form-box select {
+  width: 100%; padding: 12px; border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1); color: white; font-size: 16px;
+}
+.form-box input:focus, .form-box select:focus { outline: none; border-color: #78b4ff; box-shadow: 0 0 10px #78b4ff; }
+.form-box select option { color: black; }       /* жагсаалтын бичиг харагдахын тулд */
+.form-box button { width: 100%; margin: 25px 0 0; font-size: 16px; cursor: pointer; }
+
+/* --- Цаг ба цалин --- */
+.two-col { display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 30px; }
+.panel { flex: 1; min-width: 280px; padding: 25px; border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); }
+.panel h3 { margin-bottom: 15px; }
+.row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.15); }
+.row.total { font-size: 20px; font-weight: bold; color: #78b4ff; border: none; }
+.note { color: #c8d8ff; font-size: 14px; text-align: center; margin-top: 25px; }
+
+/* --- HR хуудас --- */
+.hidden { display: none; }              /* JavaScript үүнийг авч харуулна */
+.summary { display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 30px; }
+.summary .panel { text-align: center; }
+.big { font-size: 32px; font-weight: bold; color: #78b4ff; margin-top: 8px; }
+.error { color: #ff9b9b; margin-top: 12px; text-align: center; }
+
+footer p { margin: 8px 0; }
+footer a { color: #78b4ff; text-decoration: none; margin: 0 10px; }
+footer a:hover { color: white; }
+
+.how { text-align: center; max-width: 900px; margin: 0 auto; padding: 0 20px 80px; }
+.how h2 { font-size: 32px; margin-bottom: 30px; }
+.steps { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-bottom: 40px; }
+.step { width: 240px; }
+.step-number {
+  width: 50px; height: 50px; margin: 0 auto 15px;
+  display: flex; align-items: center; justify-content: center;
+  background: #4aa8ff; border-radius: 50%; font-size: 22px; font-weight: bold;
+}
+.step p { color: #c8d8ff; margin-top: 8px; }
+
+.search {
+  display: block; width: 100%; max-width: 500px; margin: 0 auto 30px;
+  padding: 12px 20px; border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1); color: white; font-size: 16px;
+}
+.search::placeholder { color: #c8d8ff; }
+.search:focus { outline: none; border-color: #78b4ff; box-shadow: 0 0 10px #78b4ff; }
+
+.place { flex: 1; max-width: 200px; }   
+
+@media (max-width: 600px) {
+  header { flex-wrap: wrap; gap: 10px; }
+  .page-title { font-size: 30px; }
+  .podium { gap: 8px; }
+  .place { padding: 15px 5px; }
+  .place .medal { font-size: 28px; }
+  th, td { padding: 10px; }
+}
+
+.social a { border: none; }
+.social .fb { background: #1877f2; }
+.social .ig { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); }
+.social svg { width: 20px; height: 20px; }
+
+.scroll-down {
+  display: block; width: 28px; height: 28px; margin: 50px auto 0;
+  border-right: 3px solid white; border-bottom: 3px solid white;
+  transform: rotate(45deg);                
+  animation: bounce 1.5s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) rotate(45deg); }
+  50%      { transform: translateY(12px) rotate(45deg); }
+}
+
+.team { max-width: 1100px; margin: 0 auto; padding: 40px 20px 60px; text-align: center; }
+.section-title { font-size: 32px; margin-bottom: 30px; }
+.team .cards { padding-bottom: 30px; }
+.team .card { text-align: left; }
+
+.button.profile-link { display: inline-flex; align-items: center; gap: 8px; padding: 4px 16px 4px 4px; }
+.mini-avatar {
+  width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center;
+  background: #4aa8ff; border-radius: 50%; font-weight: bold;
+}
+
+.profile-box {
+  max-width: 480px; margin: 20px auto; padding: 35px; text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 15px;
+}
+.profile-box .avatar { width: 90px; height: 90px; margin: 0 auto 15px; font-size: 36px; }
+.profile-box h2 { margin-bottom: 20px; }
+.profile-box .row { text-align: left; }
+.profile-box .button { margin-top: 25px; }
+
+.panel .button { margin-top: 15px; }
+.button:disabled { opacity: 0.6; cursor: default; box-shadow: none; }
+
+.form-box textarea {
+  width: 100%; padding: 12px; border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1); color: white;
+  font-size: 16px; font-family: inherit; resize: vertical;
+}
+.form-box textarea:focus { outline: none; border-color: #78b4ff; box-shadow: 0 0 10px #78b4ff; }
+.form-box h3 { text-align: center; }
+.profile-box .info { margin-top: 15px; }
+
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  color: white; text-decoration: none;
+  font-size: 24px; font-weight: bold;
+}
+.logo img { width: 44px; height: 44px; transition: 0.3s; }
+.logo:hover img { transform: rotate(20deg) scale(1.1); }  
+
+.hero-logo { width: 150px; height: 150px; margin-bottom: 15px; filter: drop-shadow(0 0 25px rgba(74, 168, 255, 0.7)); }
+
+
+.menu-toggle {
+  display: none; background: none; border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 10px; color: white; font-size: 22px; line-height: 1;
+  padding: 6px 12px; cursor: pointer;
+}
+nav a.active { color: white; }
+nav a.active:not(.button)::after { width: 100%; }
+
+@media (max-width: 800px) {
+  header { flex-wrap: wrap; gap: 10px; padding: 16px 20px; }
+  .menu-toggle { display: block; margin-left: auto; }
+  nav { display: none; flex-direction: column; align-items: flex-start; gap: 14px;
+        width: 100%; order: 3; padding: 15px 0 5px; }
+  nav.open { display: flex; }
+  .social { order: 2; }
+  nav a:not(.button)::after { display: none; }
+}

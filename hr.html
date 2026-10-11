@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nothing - HR хяналтын самбар.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#020a40">
+  <meta property="og:title" content="Nothing">
+  <meta property="og:description" content="Nothing - HR хяналтын самбар.">
+  <meta property="og:image" content="logo.png">
+  <title>HR хяналт - Nothing</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="circle circle1"></div>
+  <div class="circle circle2"></div>
+
+  <header>
+    <a class="logo" href="index.html"><img src="logo.png" alt="Nothing лого">Nothing</a>
+    <nav>
+      <a href="index.html">Нүүр хуудас</a>
+      <a href="time-salary.html">Цаг ба цалин</a>
+      <a href="employees.html">Ажилтнууд</a>
+      <a href="leaderboard.html">Шилдэг ажилтан</a>
+      <a href="login.html" class="button small">Нэвтрэх</a>
+    </nav>
+    <!-- Нийгмийн сүлжээ: дарахад тухайн сайт руу очно -->
+    <div class="social">
+      <a href="https://www.facebook.com" target="_blank" title="Facebook" class="fb">
+        <svg viewBox="0 0 24 24"><path fill="white" d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.4H7.7V13h2.7v8h3.1z"/></svg>
+      </a>
+      <a href="https://www.instagram.com" target="_blank" title="Instagram" class="ig">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.2" cy="6.8" r="1" fill="white" stroke="none"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- 1) Код оруулах хэсэг (эхлээд энэ харагдана) -->
+    <div id="gate">
+      <h1 class="page-title">HR хяналт</h1>
+      <p class="page-sub">Энэ хуудас руу орохын тулд код оруулна уу</p>
+
+      <form class="form-box" onsubmit="checkCode(); return false;">
+        <label for="code">Нэвтрэх код</label>
+        <input id="code" type="password" placeholder="Кодоо бичнэ үү">
+        <button type="submit" class="button">Орох</button>
+        <p id="error" class="error"></p>
+      </form>
+    </div>
+
+    <!-- 2) HR самбар (код зөв байвал л харагдана) -->
+    <div id="dashboard" class="hidden">
+      <h1 class="page-title">HR хяналтын самбар</h1>
+      <p class="page-sub">Нийт ажилчдын ирц, цаг, цалин, хүсэлт (жишээ мэдээлэл)</p>
+
+      <div class="summary">
+        <div class="panel"><div>Нийт ажилтан</div><div class="big">6</div></div>
+        <div class="panel"><div>Дундаж ирц</div><div class="big">93%</div></div>
+        <div class="panel"><div>Нийт илүү цаг</div><div class="big">34 цаг</div></div>
+        <div class="panel"><div>Шинэ хүсэлт</div><div class="big">7</div></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <tr><th>Нэр</th><th>Ажилласан</th><th>Илүү цаг</th><th>Ирц</th><th>Нийт цалин</th><th>Хүсэлт</th></tr>
+          <tr><td>Бат</td><td>176 цаг</td><td>12 цаг</td><td>98%</td><td>1,868,750₮</td><td>0</td></tr>
+          <tr><td>Болд</td><td>172 цаг</td><td>8 цаг</td><td>95%</td><td>2,050,000₮</td><td>1</td></tr>
+          <tr><td>Сара</td><td>168 цаг</td><td>5 цаг</td><td>97%</td><td>1,720,000₮</td><td>0</td></tr>
+          <tr><td>Дулмаа</td><td>170 цаг</td><td>6 цаг</td><td>92%</td><td>1,690,000₮</td><td>2</td></tr>
+          <tr><td>Нараа</td><td>160 цаг</td><td>0 цаг</td><td>90%</td><td>1,350,000₮</td><td>1</td></tr>
+          <tr><td>Тэмүүлэн</td><td>165 цаг</td><td>3 цаг</td><td>88%</td><td>1,980,000₮</td><td>3</td></tr>
+          
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+  <p>
+    <a href="time-salary.html">Цаг ба цалин</a>
+    <a href="employees.html">Ажилтнууд</a>
+    <a href="leaderboard.html">Шилдэг ажилтан</a>
+    <a href="hr.html">HR хяналт</a>
+  </p>
+  <p>© 2026 Nothing. Бүх эрх хамгаалагдсан.</p>
+</footer>
+
+  <!-- JavaScript: код зөв эсэхийг шалгана. Мөр бүрийг тайлбарласан. -->
+  <script src="script.js"></script>
+  <script>
+    function checkCode() {
+      // Хэрэглэгчийн бичсэн кодыг авна
+      var code = document.getElementById("code").value;
+
+      if (code === "HR2026") {
+        // Зөв бол: код оруулах хэсгийг нууж, самбарыг харуулна
+        document.getElementById("gate").classList.add("hidden");
+        document.getElementById("dashboard").classList.remove("hidden");
+      } else {
+        // Буруу бол алдааны мессеж гаргана
+        document.getElementById("error").textContent = "Код буруу байна. Дахин оролдоно уу.";
+      }
+    }
+  </script>
+</body>
+</html>

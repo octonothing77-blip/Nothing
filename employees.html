@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nothing - ажилтнуудын мэргэжил, ур чадвар, туршлагыг хайж олох.">
+  <meta name="theme-color" content="#020a40">
+  <meta property="og:title" content="Nothing">
+  <meta property="og:description" content="Nothing - ажилтнуудын мэргэжил, ур чадвар, туршлагыг хайж олох.">
+  <meta property="og:image" content="logo.png">
+  <title>Ажилтнууд - Nothing</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="circle circle1"></div>
+  <div class="circle circle2"></div>
+
+  <header>
+    <a class="logo" href="index.html"><img src="logo.png" alt="Nothing лого">Nothing</a>
+    <nav>
+      <a href="index.html">Нүүр хуудас</a>
+      <a href="time-salary.html">Цаг ба цалин</a>
+      <a href="employees.html">Ажилтнууд</a>
+      <a href="leaderboard.html">Шилдэг ажилтан</a>
+      <a href="login.html" class="button small">Нэвтрэх</a>
+    </nav>
+    <!-- Нийгмийн сүлжээ: дарахад тухайн сайт руу очно -->
+    <div class="social">
+      <a href="https://www.facebook.com" target="_blank" title="Facebook" class="fb">
+        <svg viewBox="0 0 24 24"><path fill="white" d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.4H7.7V13h2.7v8h3.1z"/></svg>
+      </a>
+      <a href="https://www.instagram.com" target="_blank" title="Instagram" class="ig">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.2" cy="6.8" r="1" fill="white" stroke="none"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Ажилтнууд</h1>
+    <p class="page-sub">Мэргэжилтнээ олж, ур чадвар, туршлагыг нь харна уу. (Жишээ мэдээлэл)</p>
+    <input id="search" class="search" type="text" placeholder="Нэр, мэргэжил, ур чадвараар хайх..." oninput="filterPeople()">
+    <section class="cards people">
+      <div class="card">
+        <div class="avatar">Б</div>
+        <h3>Бат</h3>
+        <p class="role">IT инженер</p>
+        <p class="info">Чиглэл: Программ хангамж</p>
+        <p class="info">Боловсрол: Компьютерийн ухааны бакалавр</p>
+        <p class="info">Туршлага: 5 жил</p>
+        <div><span class="tag">HTML/CSS</span><span class="tag">Python</span><span class="tag">Сүлжээ</span></div>
+        <button type="button" class="button" onclick="sendRequest('Бат')">Хүсэлт илгээх</button>
+      </div>
+      <div class="card">
+        <div class="avatar">Б</div>
+        <h3>Болд</h3>
+        <p class="role">HR менежер</p>
+        <p class="info">Чиглэл: Хүний нөөц</p>
+        <p class="info">Боловсрол: Менежментийн магистр</p>
+        <p class="info">Туршлага: 7 жил</p>
+        <div><span class="tag">Ярилцлага</span><span class="tag">Сургалт</span><span class="tag">Хөдөлмөрийн хууль</span></div>
+        <button type="button" class="button" onclick="sendRequest('Болд')">Хүсэлт илгээх</button>
+      </div>
+      <div class="card">
+        <div class="avatar">С</div>
+        <h3>Сара</h3>
+        <p class="role">UI дизайнер</p>
+        <p class="info">Чиглэл: Дизайн</p>
+        <p class="info">Боловсрол: Дизайны бакалавр</p>
+        <p class="info">Туршлага: 4 жил</p>
+        <div><span class="tag">Figma</span><span class="tag">Өнгө</span><span class="tag">Брэндинг</span></div>
+        <button type="button" class="button" onclick="sendRequest('Сара')">Хүсэлт илгээх</button>
+      </div>
+      <div class="card">
+        <div class="avatar">Д</div>
+        <h3>Дулмаа</h3>
+        <p class="role">Нягтлан бодогч</p>
+        <p class="info">Чиглэл: Санхүү</p>
+        <p class="info">Боловсрол: Санхүүгийн бакалавр</p>
+        <p class="info">Туршлага: 6 жил</p>
+        <div><span class="tag">Excel</span><span class="tag">Тайлан</span><span class="tag">Татвар</span></div>
+        <button type="button" class="button" onclick="sendRequest('Дулмаа')">Хүсэлт илгээх</button>
+      </div>
+      <div class="card">
+        <div class="avatar">Н</div>
+        <h3>Нараа</h3>
+        <p class="role">Маркетингийн мэргэжилтэн</p>
+        <p class="info">Чиглэл: Маркетинг</p>
+        <p class="info">Боловсрол: Маркетингийн бакалавр</p>
+        <p class="info">Туршлага: 3 жил</p>
+        <div><span class="tag">SMM</span><span class="tag">Контент</span><span class="tag">Судалгаа</span></div>
+        <button type="button" class="button" onclick="sendRequest('Нараа')">Хүсэлт илгээх</button>
+      </div>
+      <div class="card">
+        <div class="avatar">Т</div>
+        <h3>Тэмүүлэн</h3>
+        <p class="role">Борлуулалтын менежер</p>
+        <p class="info">Чиглэл: Борлуулалт</p>
+        <p class="info">Боловсрол: Бизнесийн удирдлага</p>
+        <p class="info">Туршлага: 8 жил</p>
+        <div><span class="tag">Хэлэлцээр</span><span class="tag">CRM</span><span class="tag">Харилцагч</span></div>
+        <button type="button" class="button" onclick="sendRequest('Тэмүүлэн')">Хүсэлт илгээх</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+  <p>
+    <a href="time-salary.html">Цаг ба цалин</a>
+    <a href="employees.html">Ажилтнууд</a>
+    <a href="leaderboard.html">Шилдэг ажилтан</a>
+    <a href="hr.html">HR хяналт</a>
+  </p>
+  <p>© 2026 Nothing. Бүх эрх хамгаалагдсан.</p>
+</footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Хайлтын талбарт бичих бүрт энэ функц ажиллана
+    function filterPeople() {
+      // Бичсэн үгийг жижиг үсэгт шилжүүлнэ (том, жижиг үсэг ялгахгүй байхын тулд)
+      var text = document.getElementById("search").value.toLowerCase();
+      var cards = document.querySelectorAll(".people .card");
+
+      // Карт бүрийг нэг нэгээр нь шалгана
+      for (var i = 0; i < cards.length; i++) {
+        var cardText = cards[i].textContent.toLowerCase();
+        if (cardText.indexOf(text) !== -1) {
+          cards[i].style.display = "flex";   // таарвал харуулна
+        } else {
+          cards[i].style.display = "none";   // таарахгүй бол нууна
+        }
+      }
+    }
+
+    // "Хүсэлт илгээх" товч дарахад ажиллана
+    function sendRequest(name) {
+      var message = prompt(name + "-д илгээх хүсэлтээ бичнэ үү:");
+      if (message) {
+        alert("Хүсэлт илгээгдлээ (жишээ): " + message);
+      }
+    }
+  </script>
+</body>
+</html>

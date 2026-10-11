@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nothing - ажлын цаг бүртгэх, илүү цаг болон цалингаа автоматаар бодуулах.">
+  <meta name="theme-color" content="#020a40">
+  <meta property="og:title" content="Nothing">
+  <meta property="og:description" content="Nothing - ажлын цаг бүртгэх, илүү цаг болон цалингаа автоматаар бодуулах.">
+  <meta property="og:image" content="logo.png">
+  <title>Цаг ба цалин - Nothing</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="circle circle1"></div>
+  <div class="circle circle2"></div>
+
+  <header>
+    <a class="logo" href="index.html"><img src="logo.png" alt="Nothing лого">Nothing</a>
+    <nav>
+      <a href="index.html">Нүүр хуудас</a>
+      <a href="time-salary.html">Цаг ба цалин</a>
+      <a href="employees.html">Ажилтнууд</a>
+      <a href="leaderboard.html">Шилдэг ажилтан</a>
+      <a href="login.html" class="button small">Нэвтрэх</a>
+    </nav>
+    <!-- Нийгмийн сүлжээ: дарахад тухайн сайт руу очно -->
+    <div class="social">
+      <a href="https://www.facebook.com" target="_blank" title="Facebook" class="fb">
+        <svg viewBox="0 0 24 24"><path fill="white" d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.4H7.7V13h2.7v8h3.1z"/></svg>
+      </a>
+      <a href="https://www.instagram.com" target="_blank" title="Instagram" class="ig">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.2" cy="6.8" r="1" fill="white" stroke="none"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Цаг ба цалин</h1>
+    <p class="page-sub">Ажлын цагаа бүртгүүлж, цалингаа харна (жишээ мэдээлэл)</p>
+
+    <div class="two-col">
+      <div class="panel">
+        <h3>Ажлын цаг бүртгэх</h3>
+        <p id="today" class="info"></p>
+        <button type="button" class="button" onclick="startWork()">Ажил эхэлсэн</button>
+        <button type="button" class="button" onclick="endWork()">Ажил дууссан</button>
+        <p id="start-info" class="info"></p>
+        <p id="end-info" class="info"></p>
+      </div>
+
+      <div class="panel">
+        <h3>Сарын цалин</h3>
+        <div class="row"><span>Үндсэн цалин</span><span>1,500,000₮</span></div>
+        <div class="row"><span>Илүү цагийн мөнгө</span><span>168,750₮</span></div>
+        <div class="row"><span>Бонус</span><span>200,000₮</span></div>
+        <div class="row total"><span>Нийт авах цалин</span><span>1,868,750₮</span></div>
+        <p id="salary-status" class="info"></p>
+        <button type="button" id="salary-btn" class="button" onclick="receiveSalary()">Цалингаа авах</button>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:15px">Энэ долоо хоногийн цаг</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Өдөр</th><th>Эхэлсэн</th><th>Дууссан</th><th>Ажилласан</th><th>Илүү цаг</th></tr>
+        <tr><td>Даваа</td><td>09:00</td><td>17:00</td><td>8 цаг</td><td>0 цаг</td></tr>
+        <tr><td>Мягмар</td><td>09:00</td><td>19:00</td><td>10 цаг</td><td>2 цаг</td></tr>
+        <tr><td>Лхагва</td><td>09:00</td><td>17:00</td><td>8 цаг</td><td>0 цаг</td></tr>
+        <tr><td>Пүрэв</td><td>09:00</td><td>18:00</td><td>9 цаг</td><td>1 цаг</td></tr>
+        <tr><td>Баасан</td><td>09:00</td><td>20:00</td><td>11 цаг</td><td>3 цаг</td></tr>
+        
+      </table>
+    </div>
+    <p class="note">Цалингийн дүн болон долоо хоногийн хүснэгт нь жишээ. Товчоор туршихад ажилласан цаг маш бага гарна: 8 цагаас хэтэрвэл илүү цаг бодогдоно.</p>
+  </main>
+
+  <footer>
+  <p>
+    <a href="time-salary.html">Цаг ба цалин</a>
+    <a href="employees.html">Ажилтнууд</a>
+    <a href="leaderboard.html">Шилдэг ажилтан</a>
+    <a href="hr.html">HR хяналт</a>
+  </p>
+  <p>© 2026 Nothing. Бүх эрх хамгаалагдсан.</p>
+</footer>
+
+  <script src="script.js"></script>
+  <script>
+    var startTime = null;   // ажил эхэлсэн цагийг энд хадгална
+
+    // Цагийг "09:05" хэлбэрт оруулна
+    function formatTime(d) {
+      var h = d.getHours();
+      var m = d.getMinutes();
+      if (h < 10) { h = "0" + h; }
+      if (m < 10) { m = "0" + m; }
+      return h + ":" + m;
+    }
+
+    // Өнөөдрийн огноог харуулна
+    var now = new Date();
+    document.getElementById("today").textContent =
+      "Өнөөдөр: " + now.getFullYear() + " оны " + (now.getMonth() + 1) + "-р сарын " + now.getDate();
+
+    function startWork() {
+      startTime = new Date();
+      document.getElementById("start-info").textContent = "Эхэлсэн цаг: " + formatTime(startTime);
+      document.getElementById("end-info").textContent = "";
+    }
+
+    function endWork() {
+      if (startTime === null) {
+        document.getElementById("end-info").textContent = "Эхлээд \"Ажил эхэлсэн\" товчийг дарна уу.";
+        return;
+      }
+      var end = new Date();
+      // Хугацааны зөрүү миллисекундээр гарна, цаг руу хөрвүүлнэ
+      var hours = (end - startTime) / 1000 / 60 / 60;
+      // 8 цагаас хэтэрсэн хэсэг нь илүү цаг
+      var overtime = 0;
+      if (hours > 8) { overtime = hours - 8; }
+      var pay = Math.round(overtime * 14063);   // 1 илүү цаг = 14,063₮ (жишээ)
+
+      document.getElementById("end-info").textContent =
+        "Дууссан цаг: " + formatTime(end) + ". Ажилласан: " + hours.toFixed(2) +
+        " цаг. Илүү цаг: " + overtime.toFixed(2) + " цаг (" + pay + "₮)";
+      startTime = null;
+    }
+
+    // ---------- Цалингаа авах ----------
+    // true бол цалин орж ирсэн. Бодит сайтад үүнийг HR/database тогтооно.
+    var salaryArrived = true;
+
+    // Цалингийн төлөв болон "Авах" товчийг шинэчилнэ
+    function showSalaryStatus() {
+      var status = document.getElementById("salary-status");
+      var button = document.getElementById("salary-btn");
+
+      // Нэвтрээгүй бол "Авах" хэсгийг харуулахгүй, нэвтрэхийг санал болгоно
+      if (getUser() === null) {
+        status.innerHTML = 'Цалингаа авахын тулд <a href="login.html" style="color:#78b4ff">нэвтэрнэ үү</a>.';
+        button.style.display = "none";
+        return;
+      }
+
+      if (salaryArrived === false) {
+        status.textContent = "Цалин хараахан орж ирээгүй байна.";
+        button.style.display = "none";          // орж ирээгүй бол товчийг нууна
+      } else if (localStorage.getItem("cb_salary_received") === "yes") {
+        status.textContent = "✔ Цалингаа авсан байна.";
+        button.textContent = "Авсан";
+        button.disabled = true;                 // дахин дарж болохгүй
+      } else {
+        status.textContent = "Цалин орж ирлээ!";
+      }
+    }
+
+    // "Цалингаа авах" товч дарахад ажиллана
+    function receiveSalary() {
+      if (confirm("Нийт 1,868,750₮ цалингаа авах уу?")) {
+        localStorage.setItem("cb_salary_received", "yes");   // авсанаа хөтөчид хадгална
+        showSalaryStatus();
+      }
+    }
+
+    showSalaryStatus();
+  </script>
+</body>
+</html>

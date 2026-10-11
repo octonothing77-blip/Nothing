@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nothing - ажлын цаг, цалин, ажилтны мэдээлэл, хүсэлт, гүйцэтгэлийг нэг дор удирдах компанийн ухаалаг дотоод систем.">
+  <meta name="theme-color" content="#020a40">
+  <meta property="og:title" content="Nothing">
+  <meta property="og:description" content="Nothing - ажлын цаг, цалин, ажилтны мэдээлэл, хүсэлт, гүйцэтгэлийг нэг дор удирдах компанийн ухаалаг дотоод систем.">
+  <meta property="og:image" content="logo.png">
+  <title>Nothing</title>
+  <!-- style.css файлыг энд холбож байна -->
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Арын дугуй хэлбэрүүд (background-ийг чимнэ) -->
+  <div class="circle circle1"></div>
+  <div class="circle circle2"></div>
+  <div class="circle circle3"></div>
+
+  <!-- Дээд хэсэг: лого ба цэс -->
+  <header>
+    <a class="logo" href="index.html"><img src="logo.png" alt="Nothing лого">Nothing</a>
+    <nav>
+      <a href="#features">Боломжууд</a>
+      <a href="time-salary.html">Цаг ба цалин</a>
+      <a href="employees.html">Ажилтнууд</a>
+      <a href="leaderboard.html">Шилдэг ажилтан</a>
+      <a href="login.html" class="button small">Нэвтрэх</a>
+    </nav>
+    
+    <div class="social">
+      <a href="https://www.facebook.com" target="_blank" title="Facebook" class="fb">
+        <svg viewBox="0 0 24 24"><path fill="white" d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.4H7.7V13h2.7v8h3.1z"/></svg>
+      </a>
+      <a href="https://www.instagram.com" target="_blank" title="Instagram" class="ig">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.2" cy="6.8" r="1" fill="white" stroke="none"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Гол хэсэг -->
+  <main>
+    <section class="hero">
+      <img src="logo.png" alt="Nothing лого" class="hero-logo">
+      <h1>Nothing</h1>
+      <p>Ажлын цаг, цалин, ажилтны мэдээлэл, хүсэлт, гүйцэтгэлийг нэг дор удирдах компанийн ухаалаг дотоод систем.</p>
+      <a href="#features" class="button">Дэлгэрэнгүй</a>
+      <a href="login.html" class="button">Нэвтрэх</a>
+      <!-- Доош гүйлгэх сум: дарахад "Манай ажилтнууд" хэсэг рүү гүйнэ -->
+      <a href="#team" class="scroll-down" title="Доош гүйлгэх"></a>
+    </section>
+
+    <section id="team" class="team">
+      <h2 class="section-title">Манай ажилтнууд</h2>
+      <div class="cards people">
+        <a class="card" href="employees.html">
+          <div class="avatar">Б</div><h3>Бат</h3>
+          <p class="role">IT инженер</p>
+          <p class="info">Туршлага: 5 жил</p>
+          <div><span class="tag">HTML/CSS</span><span class="tag">Python</span></div>
+          <span class="more">Дэлгэрэнгүй</span>
+        </a>
+        <a class="card" href="employees.html">
+          <div class="avatar">С</div><h3>Сара</h3>
+          <p class="role">UI дизайнер</p>
+          <p class="info">Туршлага: 4 жил</p>
+          <div><span class="tag">Figma</span><span class="tag">Брэндинг</span></div>
+          <span class="more">Дэлгэрэнгүй</span>
+        </a>
+        <a class="card" href="employees.html">
+          <div class="avatar">Б</div><h3>Болд</h3>
+          <p class="role">HR менежер</p>
+          <p class="info">Туршлага: 7 жил</p>
+          <div><span class="tag">Сургалт</span><span class="tag">Ярилцлага</span></div>
+          <span class="more">Дэлгэрэнгүй</span>
+        </a>
+      </div>
+      <a href="employees.html" class="button">Бүх ажилтныг харах</a>
+    </section>
+
+    <section id="features" class="cards">
+      <a class="card" href="time-salary.html">
+        <h3>Цаг ба цалин</h3>
+        <p>Ажлаа эхлэх, дуусгах цагаа бүртгүүлнэ. Систем ажилласан цаг болон илүү цагийн мөнгийг автоматаар бодно.</p>
+        <span class="more">Нээх</span>
+      </a>
+      <a class="card" href="employees.html">
+        <h3>Ажилтны мэдээлэл</h3>
+        <p>Албан тушаал, ур чадвар, туршлагаар нь мэргэжилтэн хайж, хүсэлт илгээнэ.</p>
+        <span class="more">Нээх</span>
+      </a>
+      <a class="card" href="leaderboard.html">
+        <h3>Leaderboard</h3>
+        <p>Ирц, даалгаврын биелэлтээр оноо бодож, сар бүр шилдэг ажилтныг тодруулна.</p>
+        <span class="more">Нээх</span>
+      </a>
+      <a class="card" href="hr.html">
+        <h3>HR хяналт</h3>
+        <p>Нийт ажилчдын ирц, цалин, гүйцэтгэл, хүсэлтийг удирдлага нэг самбараас харна.</p>
+        <span class="more">Нээх</span>
+      </a>
+    </section>
+    <section id="how" class="how">
+      <h2>Хэрхэн ажилладаг вэ?</h2>
+      <div class="steps">
+        <div class="step"><div class="step-number">1</div><h3>Нэвтэрнэ</h3><p>Ажилтан өөрийн аккаунтаар системд нэвтэрнэ.</p></div>
+        <div class="step"><div class="step-number">2</div><h3>Цагаа бүртгүүлнэ</h3><p>Ажил эхлэх, дуусгах цагаа бүртгүүлж, цалингаа харна.</p></div>
+        <div class="step"><div class="step-number">3</div><h3>Оноо цуглуулна</h3><p>Ирц, гүйцэтгэлээрээ оноо авч, сарын шилдэг ажилтан болно.</p></div>
+      </div>
+      <a href="login.html" class="button">Одоо эхлэх</a>
+    </section>
+
+
+
+  </main>
+
+  <footer>
+  <p>
+    <a href="time-salary.html">Цаг ба цалин</a>
+    <a href="employees.html">Ажилтнууд</a>
+    <a href="leaderboard.html">Шилдэг ажилтан</a>
+    <a href="hr.html">HR хяналт</a>
+  </p>
+  <p>© 2026 Nothing team tosol</p>
+</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nothing системд нэвтрэх.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#020a40">
+  <meta property="og:title" content="Nothing">
+  <meta property="og:description" content="Nothing системд нэвтрэх.">
+  <meta property="og:image" content="logo.png">
+  <title>Нэвтрэх - Nothing</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="circle circle1"></div>
+  <div class="circle circle2"></div>
+
+  <header>
+    <a class="logo" href="index.html"><img src="logo.png" alt="Nothing лого">Nothing</a>
+    <nav>
+      <a href="index.html">Нүүр хуудас</a>
+      <a href="time-salary.html">Цаг ба цалин</a>
+      <a href="employees.html">Ажилтнууд</a>
+      <a href="leaderboard.html">Шилдэг ажилтан</a>
+      <a href="login.html" class="button small">Нэвтрэх</a>
+    </nav>
+    <!-- Нийгмийн сүлжээ: дарахад тухайн сайт руу очно -->
+    <div class="social">
+      <a href="https://www.facebook.com" target="_blank" title="Facebook" class="fb">
+        <svg viewBox="0 0 24 24"><path fill="white" d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.4H7.7V13h2.7v8h3.1z"/></svg>
+      </a>
+      <a href="https://www.instagram.com" target="_blank" title="Instagram" class="ig">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.2" cy="6.8" r="1" fill="white" stroke="none"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Нэвтрэх</h1>
+    <p class="page-sub">Өөрийн аккаунтаар нэвтэрнэ үү</p>
+
+    <!-- Жишээ нэвтрэлт: зөвхөн script.js доторх бүртгэлээр нэвтэрнэ. Бодит шалгалтыг database-ээр дараа нь хийнэ. -->
+    <form class="form-box" onsubmit="login(); return false;">
+      <label for="role">Хэн бэ?</label>
+      <select id="role">
+        <option>Ажилтан</option>
+        <option>HR / Удирдлага</option>
+        <option>Хэрэглэгч</option>
+      </select>
+
+      <label for="email">Имэйл</label>
+      <input id="email" type="email" placeholder="Имэйл хаягаа бичнэ үү">
+
+      <label for="password">Нууц үг</label>
+      <input id="password" type="password" placeholder="••••••••">
+
+      <button type="submit" class="button">Нэвтрэх</button>
+      <p id="error" class="error"></p>
+    </form>
+  </main>
+
+  <footer>
+  <p>
+    <a href="time-salary.html">Цаг ба цалин</a>
+    <a href="employees.html">Ажилтнууд</a>
+    <a href="leaderboard.html">Шилдэг ажилтан</a>
+    <a href="hr.html">HR хяналт</a>
+  </p>
+  <p>© 2026 Nothing. Бүх эрх хамгаалагдсан.</p>
+</footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Нэвтэрсэн бол дахин нэвтрэх хуудас харуулах шаардлагагүй
+    if (getUser() !== null) {
+      window.location.href = "profile.html";
+    }
+
+    function login() {
+      var email = document.getElementById("email").value.trim().toLowerCase();
+      var password = document.getElementById("password").value;
+      var role = document.getElementById("role").value;
+
+      if (email === "" || password === "") {
+        document.getElementById("error").textContent = "Имэйл болон нууц үгээ бичнэ үү.";
+        return;
+      }
+
+      // script.js доторх ACCOUNT-тай тулгаж шалгана
+      if (email === ACCOUNT.email && password === ACCOUNT.password) {
+        // Зөв бол нэвтэрсэнийг хөтөчийн санах ойд хадгална
+        localStorage.setItem("cb_user", email);
+        localStorage.setItem("cb_role", role);
+
+        // Сонгосон эрхээс хамаарч өөр өөр хуудас руу шилжинэ
+        if (role === "Ажилтан") {
+          window.location.href = "time-salary.html";
+        } else if (role === "HR / Удирдлага") {
+          window.location.href = "hr.html";
+        } else {
+          window.location.href = "employees.html";
+        }
+      } else {
+        document.getElementById("error").textContent = "Ийм бүртгэл олдсонгүй.";
+      }
+    }
+  </script>
+</body>
+</html>
